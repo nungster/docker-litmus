@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  litmus:
+    image: litmus
+    build: .
+    network_mode: host
+    command: sh -c 'litmus http://localhost:1234/ user password'

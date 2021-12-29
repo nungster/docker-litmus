@@ -3,8 +3,7 @@ FROM alpine
 RUN apk --update add tar curl bash g++ make
 
 # Install Litmus
-
-ADD  http://www.webdav.org/neon/litmus/litmus-0.13.tar.gz /tmp/litmus/litmus.tar
+RUN curl http://www.webdav.org/neon/litmus/litmus-0.13.tar.gz --create-dirs --output /tmp/litmus/litmus.tar
 
 RUN tar -xvf /tmp/litmus/litmus.tar && \
     rm /tmp/litmus/litmus.tar && \
@@ -12,5 +11,3 @@ RUN tar -xvf /tmp/litmus/litmus.tar && \
     cd /litmus && \
     ./configure && \
     make install
-
-# Test with something like: make URL=http://192.168.64.7/ CREDS="foo bar" check 
