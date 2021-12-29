@@ -4,6 +4,5 @@ services:
   litmus:
     image: litmus
     build: .
-    extra_hosts:
-      - "hostname:127.0.0.1"
-    command: sh -c 'litmus URL=http://hostname:1234/ CREDS="foo bar" check || cat debug.log'
+    network_mode: host
+    command: sh -c 'litmus http://localhost:1234/ user password'
